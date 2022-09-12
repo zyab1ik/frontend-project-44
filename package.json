@@ -1,6 +1,6 @@
 {
   "name": "@hexlet/code",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Игры разума",
   "main": "index.js",
   "bin": {
@@ -19,5 +19,8 @@
     "url": "https://github.com/zyab1ik/frontend-project-44/issues"
   },
   "type": "module",
-  "homepage": "https://github.com/zyab1ik/frontend-project-44#readme"
+  "homepage": "https://github.com/zyab1ik/frontend-project-44#readme",
+  "devDependencies": {
+    "readline-sync": "^1.4.10"
+  }
 }
