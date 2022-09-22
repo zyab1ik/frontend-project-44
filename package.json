@@ -1,10 +1,11 @@
 {
   "name": "@hexlet/code",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "Игры разума",
   "main": "index.js",
   "bin": {
-    "brain-games": "bin/brain-games.js"
+    "brain-games": "bin/brain-games.js",
+    "brain-even": "bin/brain-even.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
