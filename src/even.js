@@ -57,13 +57,11 @@ const checkUserAnswer = () => {
 
     if (usersAnswer === rightAnswer) {
       console.log('Correct!');
-
       rightAnswerCount += 1;
       console.log(`Count of right Answers: ${rightAnswerCount}`);
+    } else {
+      console.log(`"${usersAnswer}" is wrong answer ;(. Correct answer was "${rightAnswer}".\n Let's try again, "${userName}"!`);
     }
-
-    console.log(`"${usersAnswer}" is wrong answer ;(. Correct answer was "${rightAnswer}".\n Let's try again, "${userName}"!`);
-    console.log('--------------------------------------------------------------------------------');
 
     if (rightAnswerCount === 3) {
       console.log(`Congratulations, ${userName}!`);
