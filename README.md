@@ -21,7 +21,6 @@
 ``Congratulations, ${userName}!``
 Любой некорректный ввод считается ошибкой (например, n) и равносилен неправильному ответу.
 
-
-
+[![asciicast](https://asciinema.org/a/P3hoKI5wgGbMTzu1VoDZka286.svg)](https://asciinema.org/a/P3hoKI5wgGbMTzu1VoDZka286)
 
 
