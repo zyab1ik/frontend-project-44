@@ -57,3 +57,4 @@ Your answer: 145
 Let's try again, Sam!``
 
 #### Реализация:
+[![asciicast](https://asciinema.org/a/dLwiAzMQrbM9E8tnoPzZ8Uyvo.svg)](https://asciinema.org/a/dLwiAzMQrbM9E8tnoPzZ8Uyvo)
