@@ -1,26 +1,12 @@
 #!/usr/bin/env node
 
 import readlineSync from 'readline-sync';
-
-const greetings = () => {
-  console.log('----------------------------------------------------------------------------------');
-  console.log('Welcome to the Brain Games!');
-
-  return this;
-};
+import * as cli from './cli.js';
 
 const rules = () => {
   console.log('Answer "yes" if the number is even, otherwise answer "no"');
-  console.log('----------------------------------------------------------------------------------');
 
   return this;
-};
-
-const generateRandomNumber = () => {
-  // returns a random integer between 0 and 100 (both included):
-  const range = 100;
-
-  return Math.floor(Math.random() * range);
 };
 
 const checkNumberIsEven = (generateNumber) => {
@@ -31,13 +17,6 @@ const checkNumberIsEven = (generateNumber) => {
   return 'no';
 };
 
-const askUserName = () => {
-  const name = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${name}!`);
-
-  return name;
-};
-
 const askQuestion = (number) => {
   console.log(`Question: ${number}`);
 
@@ -46,12 +25,12 @@ const askQuestion = (number) => {
 
 const checkUserAnswer = () => {
   const roundsCount = 3;
-  const userName = askUserName();
+  const userName = cli.askUserName();
 
   let rightAnswerCount = 0;
 
   while (rightAnswerCount < roundsCount) {
-    const randomNumber = generateRandomNumber();
+    const randomNumber = cli.generateRandomNumber();
     const usersAnswer = askQuestion(randomNumber);
     const rightAnswer = checkNumberIsEven(randomNumber);
 
@@ -70,7 +49,7 @@ const checkUserAnswer = () => {
 };
 
 const startEvenGame = () => {
-  greetings();
+  cli.greetings();
   rules();
   checkUserAnswer();
 
