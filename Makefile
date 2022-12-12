@@ -10,6 +10,15 @@ run-even:
 run-calc:
 	bin/brain-calc.js
 
+run-gcd:
+	bin/brain-gcd.js
+
+run-progression:
+	bin/brain-progression.js
+
+run-prime:
+	bin/brain-prime.js
+
 lint:
 	npx eslint .
 

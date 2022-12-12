@@ -1,13 +1,8 @@
 #!/usr/bin/env node
+import startGame from '../index.js';
+import { generateRandomNumber } from '../helpers/helpers.js';
 
-import readlineSync from 'readline-sync';
-import * as cli from './cli.js';
-
-const rules = () => {
-  console.log('Answer "yes" if the number is even, otherwise answer "no"');
-
-  return this;
-};
+export const getEvenRules = () => 'Answer "yes" if the number is even, otherwise answer "no"';
 
 const checkNumberIsEven = (generateNumber) => {
   if (generateNumber % 2 === 0) {
@@ -17,43 +12,14 @@ const checkNumberIsEven = (generateNumber) => {
   return 'no';
 };
 
-const askQuestion = (number) => {
-  console.log(`Question: ${number}`);
+export const getRoundData = () => {
+  const randomNumber = generateRandomNumber();
+  const question = `${randomNumber}`;
+  const answer = checkNumberIsEven(randomNumber);
 
-  return readlineSync.question('Your answer: ');
+  return [question, answer];
 };
 
-const checkUserAnswer = () => {
-  const roundsCount = 3;
-  const userName = cli.askUserName();
-
-  let rightAnswerCount = 0;
-
-  while (rightAnswerCount < roundsCount) {
-    const randomNumber = cli.generateRandomNumber();
-    const usersAnswer = askQuestion(randomNumber);
-    const rightAnswer = checkNumberIsEven(randomNumber);
-
-    if (usersAnswer === rightAnswer) {
-      console.log('Correct!');
-      rightAnswerCount += 1;
-      console.log(`Count of right Answers: ${rightAnswerCount}`);
-    } else {
-      console.log(`"${usersAnswer}" is wrong answer ;(. Correct answer was "${rightAnswer}".\n Let's try again, "${userName}"!`);
-    }
-
-    if (rightAnswerCount === 3) {
-      console.log(`Congratulations, ${userName}!`);
-    }
-  }
+export const startEvenGames = () => {
+  startGame(getEvenRules(), getRoundData);
 };
-
-const startEvenGame = () => {
-  cli.greetings();
-  rules();
-  checkUserAnswer();
-
-  return this;
-};
-
-export default startEvenGame;

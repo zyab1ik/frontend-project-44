@@ -1,7 +1,8 @@
 #!/usr/bin/env node
+import * as helpers from '../helpers/helpers.js';
+import startGame from '../index.js';
 
-import readlineSync from 'readline-sync';
-import * as cli from './cli.js';
+export const getCalcRules = () => 'What is the result of the expression?';
 
 const operations = ['+', '-', '*'];
 
@@ -19,55 +20,15 @@ const calculateOperation = (firstOperand, secondOperand, operation) => {
   return 'error';
 };
 
-const rules = () => {
-  console.log('What is the result of the expression?');
+export const getRoundData = () => {
+  const operation = operations[helpers.getRandomOption(0, 2)];
+  const firstOperand = helpers.generateRandomNumber();
+  const secondOperand = helpers.generateRandomNumber();
+  const answer = calculateOperation(firstOperand, secondOperand, operation);
 
-  return this;
+  return [`${firstOperand}${operation}${secondOperand}?`, answer];
 };
 
-const askQuestion = (firstOperand, secondOperand, operation) => {
-  rules();
-  console.log(`Question: ${firstOperand} ${operation} ${secondOperand}`);
-
-  return readlineSync.question('Your answer: ');
+export const startCalcGame = () => {
+  startGame(getCalcRules(), getRoundData);
 };
-
-function getRandom(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-const checkUserAnswer = () => {
-  const roundsCount = 3;
-  const userName = cli.askUserName();
-
-  let rightAnswerCount = 0;
-
-  while (rightAnswerCount < roundsCount) {
-    const operation = operations[getRandom(0, 2)];
-    const firstOperand = cli.generateRandomNumber();
-    const secondOperand = cli.generateRandomNumber();
-    const usersAnswer = askQuestion(firstOperand, secondOperand, operation);
-    const rightAnswer = calculateOperation(firstOperand, secondOperand, operation);
-
-    if (usersAnswer === rightAnswer) {
-      console.log('Correct!');
-      rightAnswerCount += 1;
-      console.log(`Count of right Answers: ${rightAnswerCount}`);
-    } else {
-      console.log(`"${usersAnswer}" is wrong answer ;(. Correct answer was "${rightAnswer}".\n Let's try again, "${userName}"!`);
-    }
-
-    if (rightAnswerCount === 3) {
-      console.log(`Congratulations, ${userName}!`);
-    }
-  }
-};
-
-const startCalcGame = () => {
-  cli.greetings();
-  checkUserAnswer();
-
-  return this;
-};
-
-export default startCalcGame;
